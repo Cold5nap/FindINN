@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Forms</title>
+</head>
+<body>
+    {% include '_menu.html' %}
+    <h1>Информация о организации</h1>
+    <form method="get">
+        <label for="XXX">Введите ИНН:</label>
+        <input id="XXX" name="ИНН" type="text" value="" />
+        <input type="submit" name="cmd" value="Отправить" />
+    </form>
+
+    {% macro table_params(d, value='') -%}
+    <h2>{{ value }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Параметр</th>
+                <th>Значение</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for k, v in d.items() %}
+            <tr>
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {%- endmacro %}
+
+    {{ table_params(params_get, 'Организация: ') }}
+
+
+
+
+</body>
+</html>
